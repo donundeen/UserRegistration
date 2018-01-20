@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Maker Hub EntrySwipe System</title>
+	<meta name="Resource-type" content="Document" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.css" />    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />    
+
+<?!= include("STYLESHEET"); ?>
+
+	<style>
+
+		/* Sections
+		 * --------------------------------------- */
+		#section0 img,
+		#section1 img{
+			margin: 20px 0 0 0;
+		}
+		#section2 img{
+			margin: 20px 0 0 52px;
+		}
+		#section3 img{
+			bottom: 0px;
+			position: absolute;
+			margin-left: -420px;
+		}
+		.intro p{
+			width: 50%;
+			margin: 0 auto;
+			font-size: 1.5em;
+		}
+		.twitter-share-button{
+			position: absolute;
+			z-index: 99;
+			right: 149px;
+			top: 9px;
+		}
+
+	</style>
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.js"></script>
+    <script src="https://cdn.rawgit.com/thanashyam/2309671/raw/5168575d69cd84588c52aa183dbfb3d932b9d4f9/jquery.md5.js"></script>
+
+</head>
+<body>
+
+<div id="fullpage" >
+	<div class="section" id="welcomeScreen">
+		<h1>Maker Hub<BR/>User Registration and <BR/>Info Changing System</h1>
+		<p>Enter your NetId:</p>
+		<input class="inputtext required" type="text" name="netid" id="usernetid"/>
+        <p>Then Press &lt;Enter&gt;</p>
+	</div>
+
+	<div class="section" id="lookingScreen">
+        <div class="slide active">
+    		<div class="intro">
+	    		<h1>Looking you up...</h1>
+		    	<img src="" alt="loading" id="loadingimg" />
+		    </div>
+        </div>
+               
+	</div>
+    
+    <div class="section userinfosection" tabindex="-1">
+        <h1>Tell us about yourself:</h1>
+        <div class="instructionsRight"><p>&lt;Tab&gt; to go to Next Field</p></div>
+        <div class="instructionsLeft"><p>&lt;Shift&gt; + &lt;Tab&gt; to go Back</p></div>
+        <div class="inputitems">
+            <div class="inputitem"><input class="inputtext longerinput formelem place1" data-place="1" type="text" name="name" id="username" size="30" placeholder="Name"/></div>
+            <div class="inputitem">
+                <select class="custom-select required formelem place2"  data-place="2" name="role" id="userrole">
+                    <option selected value="">Maker Hub Role</option>
+                    <option value="Visitor">Visitor</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Volunteer">Volunteer</option>
+                    <option value="Trusted Faculty">Authorized Faculty</option>
+                </select>
+                (Up and Down arrows to change)
+
+            </div>
+        </div>        
+
+        <div class="inputitem">
+            <select class="custom-select required  formelem place3"  data-place="3" name="status" id="userstatus">
+                <option selected value="">Academic Status</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+                <option value="Faculty">Faculty</option>
+                <option value="Staff">Staff</option>
+                <option value="Alumni">Alumni</option>
+                <option value="Other">Other</option>
+            </select>
+            (Up and Down arrows to change)
+        </div>
+        <div class="inputitem">
+            <input class="inputtext longerinput  formelem place4"  data-place="4" type="text" name="school" id="userschool" size=30 placeholder="School/Dept (or N/A)"/>
+        </div>
+        <div class="inputitem">
+            <input class="inputtext longerinput formelem place5"  data-place="5" type="text" name="year" id="useryear" size=30 placeholder="Year of Graduation (or N/A)"/>
+        </div>
+        <div class="inputitem inputmailinglist">
+            <input id="usermailinglist" type="checkbox" name="mailinglist" value="Yes" /> 
+            <label class="niceoval usermailinglist" for="usermailinglist">Put me on the Mailing List: <span id="mailinglistyesno">No</span></label>
+            <span class="spacetoChange">&nbsp;&nbsp;Press &lt;Space&gt; or &lt;Enter&gt; to Change</span>
+        </div>
+        <!--
+        <div class="inputitem">
+            <div class="detailsContinueButton niceoval nextbutton">Next</div>
+        </div>
+        -->
+    </div>
+
+
+
+    <div class="section checklistsection"  tabindex="-1">
+    <h1>Important first steps</h1>
+        <div class="instructionsRight"><p>&lt;Tab&gt; to go to Next Field</p></div>
+        <div class="instructionsLeft"><p>&lt;Shift&gt; + &lt;Tab&gt; to go Back</p></div>
+        <div class="instructionsCenter"><p>&lt;Enter&gt; or &lt;Space&gt; to Change Value</p></div>
+        
+     <div class="checklistitems">
+
+     </div>
+    
+    
+    </div>
+
+    <div class="section meritbadgesection"  tabindex="-1">
+    <h1>Merit Badges and Authorizations</h1>
+        <div class="instructionsRight"><p>&lt;Tab&gt; to go to Next Field</p></div>
+        <div class="instructionsLeft"><p>&lt;Shift&gt; + &lt;Tab&gt; to go Back</p></div>
+        <div class="instructionsCenter"><p>&lt;Enter&gt; or &lt;Space&gt; to Change Value</p></div>
+        
+     <div class="meritbadgeitems">
+     </div>
+    </div>
+    
+    
+    <div class="section swipesection">
+        <h1>Now Swipe Your Card!</h1>
+        <input style="" id="swipeenter"/>
+		<img style="width: 300px; height:300px;" src="" id="swipeimg" alt="swipe" class="rotateX" />
+		<img style="width: 300px; height:300px;" src="" id="loadingimg2" alt="swipe" style="display: none;" />
+        <BR><Br>
+        <div class="instructionsRight"><p>Or press &lt;Enter&gt; to register without cardswipe</p></div>
+    
+        <div class="instructionsLeft"><p>&lt;Shift&gt; + &lt;Tab&gt; to go Back</p></div>
+    </div>
+
+
+    <div class="section congratssection" tabindex="-1">
+        <h1>Congratulations, you're in the system!</h1>
+        <p>Now try swiping in at the entrance.</p>
+        <div class="instructionsCenter"><p>&lt;Enter&gt; to start over</p></div>
+        
+
+    </div>
+
+
+</div>
+
+<script>
+
+
+var currentUser = {};
+
+function placeImageAt(imagename, selector){
+  google.script.run.withSuccessHandler(function(url){
+    $(selector).attr("src",url);
+  }).getImageUrl(imagename);
+}
+
+function loadWelcomeScreen(){
+  currentUser = {};
+//  window.location.href = "#firstPage"
+  $.fn.fullpage.moveTo('firstPage', 0);  
+  
+  $("#usernetid").focus();
+  $("#usernetid").val("");  
+  $('#usernetid').live("keypress", function(e) {
+    console.log("netid kp");
+    if (e.keyCode == 13) {
+      if($("#usernetid").val().trim() != ""){
+          currentUser.netid = $("#usernetid").val().trim();
+          loadLoadingScreen();
+      }
+      return false; // prevent the button click from happening
+    }
+  });
+  
+}
+
+
+function loadLoadingScreen(){
+ // window.location.href = "#secondPage";
+$.fn.fullpage.moveTo('secondPage', 0);  
+    
+  google.script.run.withSuccessHandler(function(data){
+    console.log(data);
+    if(data){
+      //populate currentUser data
+      currentUser = data;
+      currentUser.newUser = false;
+    }else{
+      currentUser.newUser = true;
+    }
+    console.log(currentUser);
+    loadEnterDetailsScreen();
+  }).getUserTableDataFromNetId(currentUser.netid);
+}
+
+function loadEnterDetailsScreen(){
+//  window.location.href = "#3rdPage";
+    $.fn.fullpage.moveTo('3rdPage', 0);  
+
+  // set input fields
+  $("#username").val(currentUser.name);
+  $("#userrole").val(currentUser.role);
+  $("#userstatus").val(currentUser.status);
+  $("#userschool").val(currentUser.school);
+  $("#useryear").val(currentUser.year);
+  $("#usermailinglist").prop("checked", (currentUser.mailinglist == "Yes" ? true : false));
+  $("#mailinglistyesno").text((currentUser.mailinglist == "Yes" ? "Yes" : "No"));
+  
+  $("#username").keydown(function(de){
+     if(de.shiftKey && de.key== "Tab"){
+       console.log("back to start");
+     //  $("#username").off("keydown");
+       loadWelcomeScreen();
+       return false;
+     }
+  });
+
+  
+  $("#useryear").focus(function(){
+    var inmailinglist = false;
+    $("#useryear").keydown(function(event){
+      if(event.key == "Tab" && !event.shiftKey){
+        inmaillinglist = true;
+        $("#useryear").blur();
+        $(".userinfosection").attr("tabindex",-1).focus();      
+        $('.userinfosection').on("keydown", function(e) {
+          console.log("keydown");
+          if(e.key == " " || e.key == "Enter"){
+            console.log("change");
+            $(".usermailinglist").click();
+          }
+          if(!e.shiftKey && e.key == "Tab"){
+            $(".usermailinglist").removeClass("checkHighlighted");
+            $('.userinfosection').off("keydown");
+            storeUserDataAndContinue(); 
+          }if(e.shiftKey && e.key == "Tab"){
+            $('.userinfosection').off("keydown");
+            $(".usermailinglist").removeClass("checkHighlighted");
+            $("#useryear").focus();
+          }
+          return false;
+        });
+        $(".usermailinglist").addClass("checkHighlighted");
+        return false;
+      }
+    });
+  });
+  
+  $(".usermailinglist").click(function(){
+    console.log("clicked");
+    setTimeout(function(){
+       $("#mailinglistyesno").text(($("#usermailinglist").prop("checked") ? "Yes" : "No"));
+       }, 150);
+  });
+  
+  $("#useryear").blur(function(){
+    $("#useryear").off("keydown");
+  });
+
+  $(".detailsContinueButton").click(function(){
+    // set currentUser Data, don't continue if required fields aren't set.
+    storeUserDataAndContinue();  
+  });
+}
+
+function storeUserDataAndContinue(){
+    currentUser.name = $("#username").val();
+    currentUser.role = $("#userrole").val();
+    currentUser.status = $("#userstatus").val();
+    currentUser.school = $("#userschool").val();
+    currentUser.year = $("#useryear").val();
+    currentUser.mailinglist = ($("#usermailinglist").prop("checked") ? "Yes" : "No");
+    
+    console.log(currentUser);
+    //loadSwipeScreen();
+    loadChecklistScreen();
+}
+
+
+checklistElements = {};
+function loadChecklistScreen(){
+//  window.location.href = "#3bPage";
+  $.fn.fullpage.moveTo('3bPage', 0);  
+  $(".checklistitems").empty();
+  
+  var currentItem = 0;
+  
+  $.each(checklistItems, function(index, item){
+     console.log(item);
+     (function(_item, _index){
+       //   <input id="check_'+item.scriptname+'" type="checkbox" name="'+item.scriptname+'" value="Yes" /> 
+       //   <label class="niceoval usersomecheck" for="usersomecheck">somecheck: <span id="comecheckyesno">No</span></label>
+       //   <span class="spacetoChange">&nbsp;&nbsp;Press &lt;Space&gt; or &lt;Enter&gt; to Change</span>
+       var name = _item;
+       var scriptname = _item.replace(/[^a-zA-Z]/g, "");
+       var label = $(' <label class="niceoval check_'+scriptname+'" for="check_'+scriptname+'">'+name + ' : <span class="checkyesno">No</span></label>');
+       var input = $('<input id="check_'+scriptname+'" type="checkbox" name="'+scriptname+'" value="Yes" /> ');
+       $(input).prop("checked", (currentUser[name] == "Yes" ? true : false));
+       $(".checkyesno", label).text((currentUser[name] == "Yes" ? "Yes" : "No"));
+     
+       checklistElements[_index] = {label : label, input: input, name : name , scriptname : scriptname};
+       
+       $(".checklistitems").append(input);
+       $(".checklistitems").append(label);
+       
+       $(label).click(function(){
+         setTimeout(function(){
+           $(".checkyesno", label).text((input.prop("checked") ? "Yes" : "No"));
+         },150);
+       });
+     })(item, index);
+  });
+
+  $(".checklistContinueButton").click(function(){
+    // set currentUser Data, don't continue if required fields aren't set.
+//    storeChecklistDataAndContinue();  
+  });
+  
+  $(checklistElements[currentItem].label).addClass("checkHighlighted");
+  
+  $(".checklistsection").attr("tabindex",-1).focus();      
+  $('.checklistsection').on("keydown", function(e) {
+    console.log("keydown checklist");
+    console.log(e.key);
+    if(e.key == " " || e.key == "Enter"){
+      console.log("change");
+      $(checklistElements[currentItem].label).click();
+    }
+    if(e.key == "Tab" || e.key =="ArrowLeft" || e.key == "ArrowRight"){
+      $(checklistElements[currentItem].label).removeClass("checkHighlighted");
+      if((!e.shiftKey && e.key == "Tab") || e.key=="ArrowRight"){
+        currentItem++;
+        if(currentItem >= checklistItems.length ){
+          currentItem = 0;
+          $('.checklistsection').off("keydown");
+          storeChecklistDataAndContinue();
+          return false;
+        }
+      }else if((e.shiftKey && e.key == "Tab") || e.key=="ArrowLeft"){
+        currentItem--;
+        if(currentItem < 0){
+          currentItem = checklistItems.length - 1;
+          $('.checklistsection').off("keydown");
+          loadEnterDetailsScreen();
+          return false;
+        }
+      }
+      console.log(currentItem);
+      $(checklistElements[currentItem].label).addClass("checkHighlighted");  
+     }
+     return false;
+  });
+}
+
+function storeChecklistDataAndContinue(){
+  $.each(checklistElements, function(index, item){
+     currentUser[item.name] = ($("#check_"+item.scriptname).prop("checked") ? "Yes" : "No");    
+  });
+  console.log(currentUser);
+  loadMeritBadgeScreen();
+}
+
+meritBadgeElements = {};
+function loadMeritBadgeScreen(){
+//  window.location.href = "#3bPage";
+  $.fn.fullpage.moveTo('3cPage', 0);  
+  $(".meritbadgeitems").empty();
+  
+  var currentItem = 0;
+  
+  $.each(meritBadgeItems, function(index, item){
+     console.log(item);
+     (function(_item, _index){
+       //   <input id="check_'+item.scriptname+'" type="checkbox" name="'+item.scriptname+'" value="Yes" /> 
+       //   <label class="niceoval usersomecheck" for="usersomecheck">somecheck: <span id="comecheckyesno">No</span></label>
+       //   <span class="spacetoChange">&nbsp;&nbsp;Press &lt;Space&gt; or &lt;Enter&gt; to Change</span>
+       var name = _item;
+       var scriptname = _item.replace(/[^a-zA-Z]/g, "");
+       var label = $(' <label class="niceoval check_'+scriptname+'" for="check_'+scriptname+'">'+name + ' : <span class="checkyesno">No</span></label>');
+       var input = $('<input id="check_'+scriptname+'" type="checkbox" name="'+scriptname+'" value="Yes" /> ');
+       $(input).prop("checked", (currentUser[name] == "Yes" ? true : false));
+       $(".checkyesno", label).text((currentUser[name] == "Yes" ? "Yes" : "No"));
+     
+       meritBadgeElements[_index] = {label : label, input: input, name : name , scriptname : scriptname};
+       
+       $(".meritbadgeitems").append(input);
+       $(".meritbadgeitems").append(label);
+       
+       $(label).click(function(){
+         setTimeout(function(){
+           $(".checkyesno", label).text((input.prop("checked") ? "Yes" : "No"));
+         },150);
+       });
+     })(item, index);
+  });
+
+  
+  $(meritBadgeElements[currentItem].label).addClass("checkHighlighted");
+  
+  console.log(meritBadgeElements);
+  
+  $(".meritbadgesection").attr("tabindex",-1).focus();      
+  $('.meritbadgesection').off("keydown");
+  
+  $('.meritbadgesection').on("keydown", function(e) {
+    console.log("keydown checklist");
+    console.log(e.key);
+    if(e.key == " " || e.key == "Enter"){
+      console.log("change");
+      $(meritBadgeElements[currentItem].label).click();
+    }
+    if(e.key == "Tab" || e.key =="ArrowLeft" || e.key == "ArrowRight"){
+      console.log("moving");
+      console.log(currentItem);
+      $(meritBadgeElements[currentItem].label).removeClass("checkHighlighted");
+      if((!e.shiftKey && e.key == "Tab") || e.key=="ArrowRight"){
+        currentItem++;
+        console.log("next");
+        console.log(currentItem);
+        console.log(Object.keys(meritBadgeElements).length);
+        if(currentItem >= Object.keys(meritBadgeElements).length ){
+          currentItem = 0;
+          console.log("continuing");
+          storeMeritBadgeDataAndContinue();
+          return false;
+        }
+      }else if((e.shiftKey && e.key == "Tab") || e.key=="ArrowLeft"){
+        currentItem--;
+        if(currentItem < 0){
+          currentItem = 0;
+          loadChecklistScreen();
+          return false;
+        }
+      }
+      console.log(currentItem);
+      $(meritBadgeElements[currentItem].label).addClass("checkHighlighted");  
+     }
+     return false;
+  });
+
+}
+
+function storeMeritBadgeDataAndContinue(){
+ $('.meritbadgesection').off("keydown");
+ 
+  $.each(meritBadgeElements, function(index, item){
+     currentUser[item.name] = ($("#check_"+item.scriptname).prop("checked") ? "Yes" : "No");    
+  });
+  console.log(currentUser);
+  loadSwipeScreen();
+}
+
+
+function loadSwipeScreen(){
+console.log("loading swipescreen");
+//  window.location.href = "#4thPage";
+  $.fn.fullpage.moveTo('4thPage', 0);  
+  
+
+   var payload = ""; //where the userID is stored
+   var recording = false;//whether or not the page is recording keystrokes
+ //  alert("Press 'a1234b' and 'a5678b' to simulate the cardswiper. Card swiper values are in comments")
+  $(".swipesection").attr("tabindex",-1).focus();      
+  $('.swipesection').off("keydown");
+ 
+   $("#loadingimg2").hide();
+ 
+   $(this).off("keydown");
+   $('.swipesection').keydown(function( event ) {
+     console.log("swipe keydown");
+     event.preventDefault();//prevents default actions
+     if(event.shiftKey && event.key== "Tab"){
+       $(this).off("keydown");
+       loadMeritBadgeScreen();
+       return false;
+     }else if( event.key =="Tab" || event.key=="Enter"){
+       //register data without the swipe
+       if(currentUser.newUser){
+          console.log("saving");
+          delete  currentUser.newUser;
+          google.script.run.withSuccessHandler(function(response){
+            console.log(response);
+            $(this).off("keydown");
+            loadCongratsScreen();
+          }).insertUserData(currentUser);
+        }else{
+          console.log("updating");
+          delete currentUser.newUser;
+          google.script.run.withSuccessHandler(function(response){
+            console.log(response);
+            $(this).off("keydown");
+            loadCongratsScreen();
+          }).updateUserData(currentUser.netid, currentUser);        
+        }       
+     }
+     if (event.key == "%" /*53*/) { //when % is pressed, start recording and move to second page
+		recording = true;
+        //placeImageAt("swipe.png", "#swipeimg");
+        //placeImageAt("loading.gif", "#swipeimg");
+        $("#loadingimg2").show();
+        $("#swipeimg").hide();
+        // some sort of alart to show we got it....
+//		window.location.href = "#secondPage/0";
+      } else if (recording && event.key == "?" /*191*/){ //when ? is pressed, stop recording, update card, reset
+        var swipe = payload;
+        payload = "";
+		recording = false;        
+        currentUser.swipemd5 = $.md5(swipe);        
+        if(currentUser.newUser){
+          delete  currentUser.newUser;
+          google.script.run.withSuccessHandler(function(response){
+            console.log(response);
+            $(this).off("keydown");
+            loadCongratsScreen();
+          }).insertUserData(currentUser);
+        }else{
+          console.log("updating");
+          delete currentUser.newUser;
+          google.script.run.withSuccessHandler(function(response){
+            console.log(response);
+            $(this).off("keydown");
+            loadCongratsScreen();
+          }).updateUserData(currentUser.netid, currentUser);        
+        }
+        
+//        loadCongratsScreen;
+	} else if (recording){
+		payload += event.key; //add the keys that are pressed between "a" and "b"
+	} else{
+      return false;
+    }
+  });
+   
+
+
+}
+
+function loadCongratsScreen(){
+  console.log("congrats");
+  $.fn.fullpage.moveTo('5thPage', 0);  
+  $("#loadingimg2").hide();
+  $("#swipeimg").show();
+  
+  clearTimeout(currentTimeout);
+  currentTimeout = setTimeout(function(){
+    loadWelcomeScreen();
+  }, 5000); //wait 9 seconds on this page then go back to the beginning
+
+  $(".congratssection").attr("tabindex",-1).focus();      
+  $('.congratssection').off("keydown");
+  $('.congratssection').keydown(function( event ) {
+  console.log(event.key);
+  if(event.key == "Enter"){
+       loadWelcomeScreen();
+     }
+     return false;
+   });
+  
+}
+
+function setupInteractions(){
+     
+
+}
+
+var currentTimeout = "";
+
+
+var checklistItems = false;
+var meritBadgeItems = false;
+
+function loadMetadata(callback){
+  var maybeProceed = function(){
+    if(checklistItems && meritBadgeItems){
+      console.log("proceeding");
+      if(callback){callback()};
+    }
+  };
+  
+  google.script.run.withSuccessHandler(function(data){
+    meritBadgeItems = data;
+    maybeProceed();
+  }).getMeritBadges();
+
+  google.script.run.withSuccessHandler(function(data){
+    checklistItems = data;
+    maybeProceed();
+  }).getChecklistItems();
+
+}
+
+$(document).ready(function(){
+console.log("starting");
+   $('#fullpage').fullpage({
+     sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE',  '#ccddff', 'skyblue', 'whitesmoke', 'plum'],
+     anchors: ['firstPage', 'secondPage', '3rdPage', '3bPage', '3cPage','4thPage', '5thPage'],
+//     anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'],
+     menu: '#menu',
+     autoScrolling: false,
+     controlArrows: false,
+     scrollingSpeed: 1000,
+     scrollOverflowOptions : {
+       scrollbars : false,
+       preventDefault: false
+     },
+     afterLoad: function (anchor, index) {
+       console.log(index);
+        if (index == 3) {
+          $("#username").focus();
+        }
+     }
+   }); 
+   
+   placeImageAt("swipe.png", "#swipeimg");
+   placeImageAt("loading.gif", "#loadingimg");
+   placeImageAt("loading.gif", "#loadingimg2");
+   
+   $("#swipeenter").hide();
+   
+   loadMetadata(loadWelcomeScreen);
+
+});
+
+</script>
+    
+  </body>
+</html>
+
+
